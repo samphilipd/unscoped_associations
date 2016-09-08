@@ -46,11 +46,11 @@ module UnscopedAssociations
       define_method(association_name) do
         if self.class.reflect_on_association(association_name).options.key?(:polymorphic)
           self.association(association_name).klass.unscoped do
-            super(association_name)
+            super()
           end
         else
           self.class.reflect_on_association(association_name).klass.unscoped do
-            super(association_name)
+            super()
           end
         end
       end
